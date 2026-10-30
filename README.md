@@ -12,6 +12,8 @@ Loan default prediction pipeline for consumer lending, built on the Home Credit 
 
 Held-out test set: 61,503 applicants, never seen during training.
 
+<p align="center"><img src="docs/risk_tiers.png" width="80%" alt="Default rate by risk tier" /></p>
+
 **Risk tiers** (cut-offs fixed from training-score quintiles):
 
 | Tier | Applicants (test) | Actual default rate |
@@ -37,6 +39,27 @@ Tier E defaults about **16× more often** than tier A. That gap is what makes th
 | 3. Train | `pipeline/train.py` | Trains logistic regression and XGBoost, reports AUC, Gini, and KS, and assigns risk tiers A–E |
 | 4. Serve | `api/main.py` | `POST /predict` returns default probability, risk tier, early-warning flag, and source-file lineage |
 | 5. Monitor | `monitoring/drift.py` | Compares a new applicant batch to training with the Population Stability Index and flags features that have shifted |
+
+## API
+
+<p align="center"><img src="docs/api_docs.png" width="70%" alt="FastAPI docs" /></p>
+
+`POST /predict {"sk_id_curr": 100002}` returns the following. This applicant did default in the data, and the model flags them as tier E:
+
+```json
+{
+  "sk_id_curr": 100002,
+  "default_probability": 0.3408,
+  "risk_tier": "E",
+  "early_warning": true,
+  "lineage": [
+    {"table_name": "application", "source_file": "application_train.csv",
+     "source_sha256": "52e96b895b1112e1c853f670e58372719c8441c5ed1c57ac2f7fad559d784f5f"},
+    {"table_name": "bureau", "source_file": "bureau.csv",
+     "source_sha256": "9d799143423f280720cf51c1bfbbab2a0422da8ff2763335bb30bf43155494f7"}
+  ]
+}
+```
 
 ## Run it
 
