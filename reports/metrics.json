@@ -1,0 +1,68 @@
+{
+  "rows": {
+    "train": 246008,
+    "test": 61503,
+    "default_rate": 0.0807
+  },
+  "logistic_regression": {
+    "auc": 0.759,
+    "gini": 0.518,
+    "ks": 0.3877
+  },
+  "xgboost": {
+    "auc": 0.7803,
+    "gini": 0.5605,
+    "ks": 0.4196,
+    "best_iteration": 1216
+  },
+  "tier_cutoffs": {
+    "A|B": 0.0205,
+    "B|C": 0.037,
+    "C|D": 0.0633,
+    "D|E": 0.1202
+  },
+  "tiers": [
+    {
+      "tier": "A",
+      "applicants": 12273,
+      "default_rate": 0.0138
+    },
+    {
+      "tier": "B",
+      "applicants": 12229,
+      "default_rate": 0.0276
+    },
+    {
+      "tier": "C",
+      "applicants": 12487,
+      "default_rate": 0.0476
+    },
+    {
+      "tier": "D",
+      "applicants": 12405,
+      "default_rate": 0.091
+    },
+    {
+      "tier": "E",
+      "applicants": 12109,
+      "default_rate": 0.2258
+    }
+  ],
+  "top_features_by_gain": {
+    "EXT_SOURCE_2": 46.4,
+    "EXT_SOURCE_3": 45.7,
+    "NAME_EDUCATION_TYPE_Higher education": 43.4,
+    "inst_late_rate_last12": 27.2,
+    "CODE_GENDER_M": 25.8,
+    "CODE_GENDER_F": 21.7,
+    "EXT_SOURCE_1": 21.1,
+    "FLAG_OWN_CAR_N": 18.0,
+    "NAME_CONTRACT_TYPE_Revolving loans": 17.1,
+    "credit_to_goods": 16.6,
+    "NAME_EDUCATION_TYPE_Secondary / secondary special": 15.8,
+    "prev_refusal_rate": 15.3,
+    "NAME_INCOME_TYPE_State servant": 14.4,
+    "bureau_debt_to_credit": 14.0,
+    "DEF_30_CNT_SOCIAL_CIRCLE": 13.8
+  }
+}

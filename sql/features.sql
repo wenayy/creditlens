@@ -101,3 +101,5 @@ FROM application a
 LEFT JOIN bureau_agg b ON b.SK_ID_CURR = a.SK_ID_CURR
 LEFT JOIN prev_agg   p ON p.SK_ID_CURR = a.SK_ID_CURR
 LEFT JOIN inst_agg   i ON i.SK_ID_CURR = a.SK_ID_CURR;
+
+CREATE UNIQUE INDEX ix_features_curr ON features(SK_ID_CURR);
