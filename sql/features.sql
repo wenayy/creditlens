@@ -69,8 +69,9 @@ SELECT
   a.SK_ID_CURR,
   a.TARGET,
 
-  -- Applicant profile
-  a.NAME_CONTRACT_TYPE, a.CODE_GENDER, a.FLAG_OWN_CAR, a.FLAG_OWN_REALTY,
+  -- Applicant profile. CODE_GENDER is deliberately excluded: RBI's Fair Practices Code
+  -- bars discrimination on grounds of sex in lending, so it must not drive a credit score.
+  a.NAME_CONTRACT_TYPE, a.FLAG_OWN_CAR, a.FLAG_OWN_REALTY,
   a.NAME_INCOME_TYPE, a.NAME_EDUCATION_TYPE, a.NAME_FAMILY_STATUS, a.NAME_HOUSING_TYPE,
   a.CNT_CHILDREN, a.REGION_RATING_CLIENT,
   -a.DAYS_BIRTH / 365.25                                             AS age_years,
